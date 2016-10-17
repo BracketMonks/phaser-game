@@ -190,7 +190,7 @@ function collectStar (player, star) {
 }
 
 
-
+/* =========== PRELOAD FUNCTION */
 function preload() {
     // load the world assets
     gameAssets.worldAssets();
@@ -202,6 +202,7 @@ function preload() {
     gameAssets.playerAssets();
 }
 
+/* =========== CREATE FUNCTION */
 function create() {
     //// Game functionality
     gameSettings.physics('ARCADE');
@@ -222,6 +223,7 @@ function create() {
     gameSettings.controls.initControll();
 }
 
+/* =========== UPDATE FUNCTION */
 function update() {
     //  Collide the player and the stars with the platforms
     game.physics.arcade.collide(player, platforms);
