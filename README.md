@@ -1,5 +1,10 @@
 <h1 style="text-align: center">Phaser Game</h1>
+
+<br />
+
 <img align="center" height="300" width="300" align="middle" src="https://github.com/BracketMonks/phaser-game/blob/master/images/repo/game-screen.png" />
+
+<br />
 
 > #####This is a game done with phaser , it is a basic arcade style game involving collecting stars and scoring points
 ---
