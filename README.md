@@ -1,5 +1,7 @@
 # Phaser Game
 
+Screen Shot 2016-10-17 at 23.25.13
+
 ### This is a game done with phaser , it is a basic arcade style game involving collecting stars and scoring points
 
 ### The pourpose is strictly for reasearch pourpose
