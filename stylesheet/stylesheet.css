@@ -1,9 +1,54 @@
+html,
+body {
+    height: 100%;
+}
 
+body {
+    display: block;
+    position: relative;
+    font-family: 'Bungee Inline', cursive;
+    font-size: 16px;
+    background: #247BA0;
+}
 
-.game-title {
-    text-align: center;
+.game-wrapper {
+    display: inline-block;
+    position: relative;
+    width: 100%;
 }
 
 canvas {
     margin: 0 auto;
 }
+
+.game-header {
+    padding: 20px 80px;
+    background: #F25F5C;
+}
+
+.game-title {
+    color: #fff;
+    font-size: 22px;
+    text-align: center;
+}
+
+.game-controls  {
+    display: block;
+    padding: 20px 80px;
+    margin-bottom: 20px;
+    border-top: 2px solid #FFE066;
+    border-bottom: 2px solid #FFE066;
+    background: #000;
+}
+
+
+.game-fullscreen {
+    background: none;
+    border: 1px solid #70C1B3;
+    color: #70C1B3;
+    font-size: 30px;
+}
+
+
+
+

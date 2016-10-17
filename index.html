@@ -12,8 +12,11 @@
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
         <link rel="stylesheet" href="stylesheet/stylesheet.css">
+        <link href="https://fonts.googleapis.com/css?family=Bungee+Inline" rel="stylesheet">
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
         <script src="javascript/phaser.min.js"></script>
+        <script src="https://use.fontawesome.com/8c50567563.js"></script>
 
     </head>
     <body>
@@ -23,7 +26,13 @@
 
         <!-- Add your site or application content here -->
         <div class="game-wrapper">
-            <h1 class="game-title">Phaser game</h1>
+            <header class="game-header" id="header" class="">
+                <h1 class="game-title">Phaser game</h1>
+            </header><!-- /header -->
+
+            <section class="game-controls">
+                <button class="game-fullscreen js-fullscreen"><i class="fa fa-expand" aria-hidden="true"></i></button>
+            </section>
         </div>
 
         <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
