@@ -9,7 +9,7 @@
 > #####This is a game done with phaser , it is a basic arcade style game involving collecting stars and scoring points
 ---
 
-#### The pourpose is strictly for reasearch pourpose
+#### Strictly for reasearch pourpose, will not expand gameplay to acomodate other players , only me :P 
 #### NOTE: I will expand upon this game to make it more fun
 #### Installing the game :
 
