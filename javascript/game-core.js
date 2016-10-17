@@ -10,6 +10,7 @@ var platforms;
 var cursors;
 
 var stars;
+var diamonds;
 var score = 0;
 var scoreText;
 
@@ -26,6 +27,7 @@ var gameAssets = {
 
     itemAssets: function () {
         game.load.image('star', 'images/star.png');
+        game.load.image('diamond', 'images/diamond.png');
     },
 
     playerAssets: function () {
@@ -58,7 +60,7 @@ var gameSettings = {
 
     score: function () {
         //  The score
-        scoreText = game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
+        scoreText = game.add.text(16, 16, 'score: 0', { fontSize: '16px', fill: '#000' });
     },
 
     controls: {
@@ -130,13 +132,13 @@ var gameComponents = {
 
         ledge: function () {
             //  Now let's create two ledges
-            var ledge = platforms.create(500, 500, 'ground');
+            var ledge = platforms.create(400, 500, 'ground');
             ledge.body.immovable = true;
 
-            ledge = platforms.create(-150, 250, 'ground');
+            ledge = platforms.create(-120,280, 'ground');
             ledge.body.immovable = true;
 
-            ledge = platforms.create(40, 400, 'ground');
+            ledge = platforms.create(20, 400, 'ground');
             ledge.body.immovable = true;
         },
 
@@ -165,28 +167,47 @@ var gameComponents = {
             stars.enableBody = true;
 
             //  Here we'll create 12 of them evenly spaced apart
-            for (var i = 0; i < 12; i++) {
+            for (var i = 0; i < 4; i++) {
                 //  Create a star inside of the 'stars' group
-                var star = stars.create(i * 70, 0, 'star');
+                var star = stars.create(i * 150, 500, 'star');
 
                 //  Let gravity do its thing
-                star.body.gravity.y = 300;
+                star.body.gravity.y = 500;
 
                 //  This just gives each star a slightly random bounce value
                 star.body.bounce.y = 0.7 + Math.random() * 0.2;
+            }
+        },
+
+        diamonds: function () {
+            diamonds = game.add.group();
+            diamonds.enableBody = true;
+
+            //  Here we'll create 12 of them evenly spaced apart
+            for (var i = 0; i < 6; i++) {
+                //  Create a star inside of the 'stars' group
+                var diamond = diamonds.create(i * 180, 50, 'diamond');
+
+                //  Let gravity do its thing
+                diamond.body.gravity.y = 500;
+
+                //  This just gives each star a slightly random bounce value
+                diamond.body.bounce.y = 0.1 + Math.random() * 0.2;
             }
         }
     }
 };
 
 //// Collect stars score increment and removal
-function collectStar (player, star) {
+function colectItems (player, items) {
     // Removes the star from the screen
-    star.kill();
+    items.kill();
 
     //  Add and update the score
+
     score += 10;
-    scoreText.text = 'Score: ' + score;
+
+    scoreText.text = 'score: ' + score;
 }
 
 
@@ -215,6 +236,7 @@ function create() {
     gameComponents.elementGroups.ledge();
     gameComponents.elementGroups.player();
     gameComponents.elementGroups.stars();
+    gameComponents.elementGroups.diamonds();
 
     //// Game score init
     gameSettings.score();
@@ -228,9 +250,11 @@ function update() {
     //  Collide the player and the stars with the platforms
     game.physics.arcade.collide(player, platforms);
     game.physics.arcade.collide(stars, platforms);
+    game.physics.arcade.collide(diamonds, platforms);
 
     //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
-    game.physics.arcade.overlap(player, stars, collectStar, null, this);
+    game.physics.arcade.overlap(player, stars, colectItems, null, this);
+    game.physics.arcade.overlap(player, diamonds, colectItems, null, this);
 
     //  Reset the players velocity (movement)
     player.body.velocity.x = 0;
