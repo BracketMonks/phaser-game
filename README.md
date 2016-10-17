@@ -1,5 +1,8 @@
 # Phaser Game
 
+<img height="300" width="300" align="middle" src="https://github.com/BracketMonks/phaser-game/blob/master/images/repo/game-screen.png" />
+
+
 
 ### This is a game done with phaser , it is a basic arcade style game involving collecting stars and scoring points
 
