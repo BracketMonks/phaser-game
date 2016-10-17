@@ -54,6 +54,48 @@ var gameSettings = {
             }
         });
 
+    },
+
+    score: function () {
+        //  The score
+        scoreText = game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
+    },
+
+    controls: {
+        initControll: function () {
+            //  Our controls.
+            cursors = game.input.keyboard.createCursorKeys();
+        },
+
+        mapControls: function () {
+            if (cursors.left.isDown)
+            {
+                //  Move to the left
+                player.body.velocity.x = -100;
+
+                player.animations.play('left');
+            }
+            else if (cursors.right.isDown)
+            {
+                //  Move to the right
+                player.body.velocity.x = 100;
+
+                player.animations.play('right');
+            }
+            else
+            {
+                //  Stand still
+                player.animations.stop();
+
+                player.frame = 4;
+            }
+
+            //  Allow the player to jump if they are touching the ground.
+            if (cursors.up.isDown && player.body.touching.down)
+            {
+                player.body.velocity.y = -450;
+            }
+        }
     }
 };
 
@@ -135,8 +177,17 @@ var gameComponents = {
             }
         }
     }
-
 };
+
+//// Collect stars score increment and removal
+function collectStar (player, star) {
+    // Removes the star from the screen
+    star.kill();
+
+    //  Add and update the score
+    score += 10;
+    scoreText.text = 'Score: ' + score;
+}
 
 
 
@@ -151,16 +202,10 @@ function preload() {
     gameAssets.playerAssets();
 }
 
-
-
 function create() {
     //// Game functionality
     gameSettings.physics('ARCADE');
-
-
     gameSettings.fullscreen();
-
-
 
     //// Game elements
     gameComponents.elements.sky();
@@ -170,20 +215,14 @@ function create() {
     gameComponents.elementGroups.player();
     gameComponents.elementGroups.stars();
 
+    //// Game score init
+    gameSettings.score();
 
-
-
-
-    //  The score
-    scoreText = game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
-
-    //  Our controls.
-    cursors = game.input.keyboard.createCursorKeys();
-
+    //// Game controls init
+    gameSettings.controls.initControll();
 }
 
 function update() {
-
     //  Collide the player and the stars with the platforms
     game.physics.arcade.collide(player, platforms);
     game.physics.arcade.collide(stars, platforms);
@@ -194,48 +233,8 @@ function update() {
     //  Reset the players velocity (movement)
     player.body.velocity.x = 0;
 
-    if (cursors.left.isDown)
-    {
-        //  Move to the left
-        player.body.velocity.x = -100;
-
-        player.animations.play('left');
-    }
-    else if (cursors.right.isDown)
-    {
-        //  Move to the right
-        player.body.velocity.x = 100;
-
-        player.animations.play('right');
-    }
-    else
-    {
-        //  Stand still
-        player.animations.stop();
-
-        player.frame = 4;
-    }
-
-    //  Allow the player to jump if they are touching the ground.
-    if (cursors.up.isDown && player.body.touching.down)
-    {
-        player.body.velocity.y = -450;
-    }
-
+    // Set game controlls
+    gameSettings.controls.mapControls();
 }
-
-
-function collectStar (player, star) {
-
-    // Removes the star from the screen
-    star.kill();
-
-    //  Add and update the score
-    score += 10;
-    scoreText.text = 'Score: ' + score;
-
-}
-
-
 
 
