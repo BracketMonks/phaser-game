@@ -9,8 +9,10 @@
 > #####This is a game done with phaser , it is a basic arcade style game involving collecting stars and scoring points
 ---
 
-#### Strictly for reasearch pourpose, will not expand gameplay to acomodate other players , only me :P 
+#### Strictly for reasearch pourpose and open source
+
 #### NOTE: I will expand upon this game to make it more fun
+
 #### Installing the game :
 
 1. You need a webserver to run the game you could do this in a number of ways - fastest ways are MAMP, XAMPP, Setting a local server with vhost, gulp or grunt
